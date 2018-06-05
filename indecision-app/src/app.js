@@ -1,10 +1,12 @@
-class IndecisionApp extends React.Component {
-    constructor(props){
-        super(props);
+// stateless functional component
 
-        this.state ={
+class IndecisionApp extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
             options: []
-        }
+        };
 
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
         this.handlePick = this.handlePick.bind(this);
@@ -15,7 +17,7 @@ class IndecisionApp extends React.Component {
         this.setState(() => {
             return {
                 options: []
-            }
+            };
         });
     }
 
@@ -27,21 +29,21 @@ class IndecisionApp extends React.Component {
 
     handleAddOption(option) {
         if (!option) {
-            return 'Enter valid value to add item'
+            return 'Enter valid value to add item';
         } else if (this.state.options.indexOf(option) > -1) {
-            return 'This option already exisits'
+            return 'This option already exists';
         }
 
         this.setState((prevState) => {
             return {
                 options: prevState.options.concat(option)
-            }
+            };
         });
     }
 
     render() {
         const title = 'Indecision';
-        const subtitle = 'Put your life in the hands of a computer.';
+        const subtitle = 'Put your life in the hands of a computer';
 
         return (
             <div>
@@ -69,7 +71,7 @@ const Header = (props) => {
             <h2>{props.subtitle}</h2>
         </div>
     );
-}
+};
 
 const Action = (props) => {
     return (
@@ -79,57 +81,48 @@ const Action = (props) => {
                 disabled={!props.hasOptions}
             >
                 What should I do?
-            </button>
+      </button>
         </div>
     );
-}
+};
 
 const Options = (props) => {
     return (
         <div>
-            <button onClick={props.handleDeleteOptions}>Remove all!</button>
+            <button onClick={props.handleDeleteOptions}>Remove All</button>
             {
                 props.options.map((option) => <Option key={option} optionText={option} />)
-
             }
         </div>
-    )
-}
+    );
+};
 
 const Option = (props) => {
     return (
         <div>
-            Option: {props.optionText}
+            {props.optionText}
         </div>
     );
-}
+};
 
 class AddOption extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-
+        this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
             error: undefined
-        }
-
-        this.handleAddOption = this.handleAddOption.bind(this);
+        };
     }
 
     handleAddOption(e) {
         e.preventDefault();
 
-        const option = e.target.elements.option.value.trim() ;
+        const option = e.target.elements.option.value.trim();
         const error = this.props.handleAddOption(option);
 
         this.setState(() => {
-            return {
-                error
-            }
-        })
-
-        if (option) {
-            this.props.handleAddOption(option);
-        }
+            return { error };
+        });
     }
 
     render() {
@@ -146,12 +139,12 @@ class AddOption extends React.Component {
 }
 
 // const User = (props) => {
-//     return (
-//         <div>
-//             <p>Name: {props.name}</p>
-//             <p>Age: {props.age}</p>
-//         </div>
-//     )
-// }
+//   return (
+//     <div>
+//       <p>Name: {props.name}</p>
+//       <p>Age: {props.age}</p>
+//     </div>
+//   );
+// };
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));

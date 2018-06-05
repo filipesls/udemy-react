@@ -8,6 +8,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// stateless functional component
+
 var IndecisionApp = function (_React$Component) {
     _inherits(IndecisionApp, _React$Component);
 
@@ -48,7 +50,7 @@ var IndecisionApp = function (_React$Component) {
             if (!option) {
                 return 'Enter valid value to add item';
             } else if (this.state.options.indexOf(option) > -1) {
-                return 'This option already exisits';
+                return 'This option already exists';
             }
 
             this.setState(function (prevState) {
@@ -61,7 +63,7 @@ var IndecisionApp = function (_React$Component) {
         key: 'render',
         value: function render() {
             var title = 'Indecision';
-            var subtitle = 'Put your life in the hands of a computer.';
+            var subtitle = 'Put your life in the hands of a computer';
 
             return React.createElement(
                 'div',
@@ -124,7 +126,7 @@ var Options = function Options(props) {
         React.createElement(
             'button',
             { onClick: props.handleDeleteOptions },
-            'Remove all!'
+            'Remove All'
         ),
         props.options.map(function (option) {
             return React.createElement(Option, { key: option, optionText: option });
@@ -136,7 +138,6 @@ var Option = function Option(props) {
     return React.createElement(
         'div',
         null,
-        'Option: ',
         props.optionText
     );
 };
@@ -149,11 +150,10 @@ var AddOption = function (_React$Component2) {
 
         var _this2 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
 
+        _this2.handleAddOption = _this2.handleAddOption.bind(_this2);
         _this2.state = {
             error: undefined
         };
-
-        _this2.handleAddOption = _this2.handleAddOption.bind(_this2);
         return _this2;
     }
 
@@ -166,14 +166,8 @@ var AddOption = function (_React$Component2) {
             var error = this.props.handleAddOption(option);
 
             this.setState(function () {
-                return {
-                    error: error
-                };
+                return { error: error };
             });
-
-            if (option) {
-                this.props.handleAddOption(option);
-            }
         }
     }, {
         key: 'render',
@@ -204,12 +198,12 @@ var AddOption = function (_React$Component2) {
 }(React.Component);
 
 // const User = (props) => {
-//     return (
-//         <div>
-//             <p>Name: {props.name}</p>
-//             <p>Age: {props.age}</p>
-//         </div>
-//     )
-// }
+//   return (
+//     <div>
+//       <p>Name: {props.name}</p>
+//       <p>Age: {props.age}</p>
+//     </div>
+//   );
+// };
 
 ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
