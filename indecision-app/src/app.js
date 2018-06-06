@@ -29,17 +29,17 @@ class IndecisionApp extends React.Component {
     }
 
     // lifecycle Methods
-    componentDidUpdate(prevProps, prevState) {{
+    componentDidUpdate(prevProps, prevState) {
         if (prevState.options.length !== this.state.options.length) {
             const json = JSON.stringify(this.state.options);
             localStorage.setItem('options', json)
         }
-    }}
+    }
 
     // lifecycle Methods
-    componentWillUnmount() {{
+    componentWillUnmount() {
         console.log('componentWillUnmount')
-    }}
+    }
 
     handleDeleteOptions() {
         this.setState(() => ({ options: [] }));
