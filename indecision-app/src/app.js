@@ -1,11 +1,6 @@
-// import './utils.js';
-import { square, add } from './utils.js'
-import { isAdult, canDrink } from './person.js'
+// install -> import -> use
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log('App.js is running');
-
-console.log(square(4));
-console.log(add(100, 23));
-
-console.log(isAdult(18));
-console.log(canDrink(18));
+const template = <p>Test 123</p>
+ReactDOM.render(template, document.getElementById('app'));
