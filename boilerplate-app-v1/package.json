@@ -1,5 +1,5 @@
 {
-  "name": "indecision-app",
+  "name": "boilerplate-app",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Filipe Santana",
@@ -19,7 +19,7 @@
     "css": "^2.2.3",
     "css-loader": "0.28.4",
     "live-server": "^1.2.0",
-    "node-sass": "4.5.3",
+    "node-sass": "^4.9.0",
     "normalize.css": "^8.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
