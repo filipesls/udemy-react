@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {
     BrowserRouter,
+    Link,
+    NavLink,
     Route,
     Switch
 } from 'react-router-dom';
@@ -34,19 +36,42 @@ const HelpPage = () => (
 
 const NotFoundPage = () => (
     <div>
-        404!
+        404! <Link to="/">Go Home</Link>
     </div>
+);
+
+const Header = () => (
+    <header>
+        <h1>Expensify</h1>
+        <ul>
+            <li>
+                <NavLink to="/" exact activeClassName="is-active">Dashboard</NavLink>
+            </li>
+            <li>
+                <NavLink to="/create" activeClassName="is-active">Create</NavLink>
+            </li>
+            <li>
+                <NavLink to="/edit" activeClassName="is-active">Edit</NavLink>
+            </li>
+            <li>
+                <NavLink to="/help" activeClassName="is-active">Help</NavLink>
+            </li>
+        </ul>
+    </header>
 );
 
 const routes =(
     <BrowserRouter>
-        <Switch>
-            <Route exact path="/" component={ExpensiveDashboardPage} />
-            <Route path="/create" component={AddExpensivePage} />
-            <Route path="/edit" component={EditExpensivePage} />
-            <Route path="/help" component={HelpPage} />
-            <Route component={NotFoundPage} />
-        </Switch>
+        <div>
+            <Header />
+            <Switch>
+                <Route exact path="/" component={ExpensiveDashboardPage} />
+                <Route path="/create" component={AddExpensivePage} />
+                <Route path="/edit" component={EditExpensivePage} />
+                <Route path="/help" component={HelpPage} />
+                <Route component={NotFoundPage} />
+            </Switch>
+        </div>
     </BrowserRouter>
 );
 
