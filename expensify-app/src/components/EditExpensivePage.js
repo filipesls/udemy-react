@@ -1,9 +1,12 @@
 import React from 'react';
 
-const EditExpensivePage = () => (
-    <div>
-        This is from my edit expensive component
-    </div>
-);
+const EditExpensivePage = (props) => {
+    console.log(props);
+    return (
+        <div>
+            Editing the expensive with id { props.match.params.id }
+        </div>
+    );
+};
 
 export default EditExpensivePage;
