@@ -1,6 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 import uuid from 'uuid';
 
+/* action > expenses.js --- Start */
 // ADD_EXPENSE
 const addExpense = ({ description = '', note = '', amount = 0, createdAt = 0 } = {}) => ({
     type: 'ADD_EXPENSE',
@@ -31,7 +32,9 @@ const setTextFilter = (text = '') => ({
     type: 'SET_TEXT_FILTER',
     text
 });
+/* action > expenses.js --- Finish */
 
+/* action > filter.js --- Start */
 // SORT_BY_AMOUNT
 const sortByAmount = () => ({
     type: 'SORT_BY_AMOUNT'
@@ -53,7 +56,9 @@ const setEndDate = (endDate) => ({
     type: 'SET_END_DATE',
     endDate
 });
+/* action > filter.js --- Finish */
 
+/* reducers > expenses.js --- Start */
 // Expenses Reducer
 const expensesReducerDefaultState = [];
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
@@ -77,7 +82,9 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
             return state;
     }
 }
+/* reducers > expenses.js --- Finish */
 
+/* reducers > filters.js --- Start */
 // Filters Reducer
 const filtersReducerDefaultState = {
     text: '',
@@ -116,10 +123,9 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
             return state;
     }
 }
+/* reducers > filters.js --- Start */
 
-// timestamps (milliseconds)
-// 33400, 10, -1203
-
+/* selectors > expenses.js --- Start */
 // Get  visible expenses
 const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     return expenses.filter((expense) => {
@@ -136,7 +142,9 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
         }
     });
 }
+/* selectors > expenses.js --- Finish */
 
+/* store > configureStore.js --- Start */
 // Store Creation
 const store = createStore(
     combineReducers({
@@ -144,6 +152,7 @@ const store = createStore(
         filters: filtersReducer
     })
 );
+/* store > configureStore.js --- Finish */
 
 store.subscribe(() => {
     const state = store.getState();
