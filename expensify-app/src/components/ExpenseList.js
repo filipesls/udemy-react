@@ -15,8 +15,6 @@ const ExpenseList = (props) => (
 const mapStateToProps = (state) => {
     return {
         expenses: selectExpenses(state.expenses, state.filters)
-        // expenses: state.expenses,
-        // filters: state.filters
     }
 };
 
