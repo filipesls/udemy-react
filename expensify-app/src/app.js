@@ -20,7 +20,7 @@ store.dispatch(addExpense({ description: 'Gas bill', amount: 55 } ));
 store.dispatch(setTextFilter('water'));
 
 setTimeout(() => {
-    store.dispatch(setTextFilter('rent'));
+    store.dispatch(setTextFilter('bill'));
 }, 3000);
  
 // getVisibleExpensive -> print visible ones to screen
