@@ -7,7 +7,7 @@ export class AddExpensivePage extends React.Component {
     onSubmit = (expense) => {
         this.props.onSubmit(expense);
         this.props.history.push('/');
-    }
+    };
     render() {
         return (
             <div>
