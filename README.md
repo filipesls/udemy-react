@@ -5,3 +5,6 @@ yarn run serve
 yarn run build
 
 yarn run dev-server
+
+## run test
+yarn test -- --watch
