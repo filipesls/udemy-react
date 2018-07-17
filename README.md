@@ -9,6 +9,12 @@ yarn run dev-server
 ## run test
 yarn test -- --watch
 
+## HEROKU
+https://devcenter.heroku.com/articles/heroku-cli#download-and-install
+
+heroku create udemy-react-filipe
+https://udemy-react-filipe.herokuapp.com/ | https://git.heroku.com/udemy-react-filipe.git
+
 
 ## Course content - fixes
 
