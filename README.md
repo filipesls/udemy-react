@@ -1,4 +1,5 @@
 # udemy-react
+@autor: Filipe Santana
 
 ##run the app with yarn
 yarn run serve
