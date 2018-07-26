@@ -13,10 +13,82 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref().on('value', (dataSnapshot) => {
-    const val = dataSnapshot.val();
-    console.log(`${val.name} is a ${val.job.title} at ${val.job.company}.`)
+// child_removed
+database.ref('expenses').on('child_removed', (snapshot) => {
+    console.log('This expense was removed - ', snapshot.key, snapshot.val());
 });
+
+// child_changed
+database.ref('expenses').on('child_changed', (snapshot) => {
+    console.log('This expense was changed - ', snapshot.key, snapshot.val());
+});
+
+// child_added
+database.ref('expenses').on('child_added', (snapshot) => {
+    console.log('This expense was added - ', snapshot.key, snapshot.val());
+});
+
+// database.ref('expenses').on('value', (snapshot) => {
+//     const expenses = [];
+
+//     snapshot.forEach(function (childSnapshot) {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
+
+//     console.log(expenses);
+// });
+
+
+
+// database.ref('expenses')
+// .once('value')
+// .then((snapshot) => {
+//     const expenses = [];
+
+//     snapshot.forEach(function (childSnapshot) {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
+//     console.log(expenses);
+
+//     // const val = snapshot.val();
+//     // console.log(val);
+// }).catch((e) => {
+//     console.log('This failed.' + e);
+// });
+
+// database.ref('expenses').push({
+//     description: 'Course',
+//     note: 'React',
+//     amount: 1290,
+//     createdAt: '01/04/18'
+// });
+
+
+
+
+// database.ref('notes/-LIM0jCt5BKMkQh4sW3n').remove();
+
+// database.ref('notes/-LIM0jCt5BKMkQh4sW3n').update({
+//     body: 'React Native'
+// });
+
+// database.ref('notes').push({
+//     title: 'Course',
+//     body: 'Angular'
+// });
+
+// database.ref('notes').set(notes);
+
+// database.ref().on('value', (dataSnapshot) => {
+//     const val = dataSnapshot.val();
+//     console.log(`${val.name} is a ${val.job.title} at ${val.job.company}.`)
+// });
 
 // const onValueChange = database.ref().on('value', (dataSnapshot) => {
 //     console.log(dataSnapshot.val());
